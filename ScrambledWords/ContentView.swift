@@ -8,6 +8,7 @@ import SwiftUI
 struct ContentView: View {
     
     @State private var letters: [String] = ["O", "R", "A", "N", "G", "E"]
+    @State private var guessedLetters: [String] = []
     
     var body: some View {
         GeometryReader { proxy in
@@ -26,11 +27,13 @@ struct ContentView: View {
                         Spacer()
                         
                         HStack {
-                            VStack {
-                                LetterView(character: "")
-                                Rectangle()
-                                    .fill(Color.white)
-                                    .frame(width: 25, height: 2)
+                            ForEach(guessedLetters, id: \.self) { guessedLetter in
+                                VStack {
+                                    LetterView(character: guessedLetter)
+                                    Rectangle()
+                                        .fill(Color.white)
+                                        .frame(width: 25, height: 2)
+                                }
                             }
                         }
                         .padding(.bottom, 20)
@@ -49,6 +52,9 @@ struct ContentView: View {
                     HStack {
                         ForEach(letters, id: \.self) { letter in
                             LetterView(character: letter)
+                                .onTapGesture {
+                                    guessedLetters.append(letter)
+                                }
                         }
                     }
                 }
