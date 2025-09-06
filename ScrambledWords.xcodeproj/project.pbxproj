@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -22,6 +22,10 @@
 		20A5001F2B4E6D6D0061CC1B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C2163D992E4D04AC0015B308 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		C2330AF12E6BB98200BC16C9 /* Models */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Models; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		20A500122B4E6D630061CC1B /* Frameworks */ = {
@@ -53,6 +57,7 @@
 		20A500172B4E6D630061CC1B /* ScrambledWords */ = {
 			isa = PBXGroup;
 			children = (
+				C2330AF12E6BB98200BC16C9 /* Models */,
 				20A500182B4E6D630061CC1B /* ScrambledWordsApp.swift */,
 				20A5001A2B4E6D630061CC1B /* ContentView.swift */,
 				20A5001C2B4E6D6D0061CC1B /* Assets.xcassets */,
@@ -84,6 +89,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				C2330AF12E6BB98200BC16C9 /* Models */,
 			);
 			name = ScrambledWords;
 			productName = ScrambledWords;

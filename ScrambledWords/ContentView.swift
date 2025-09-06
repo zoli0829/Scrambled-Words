@@ -7,8 +7,15 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State private var letters: [String] = ["O", "R", "A", "N", "G", "E"]
-    @State private var guessedLetters: [String] = []
+    @State private var letters: [Letter] = [
+        Letter(id: 0, text: "A"),
+        Letter(id: 1, text: "O"),
+        Letter(id: 2, text: "E"),
+        Letter(id: 3, text: "R"),
+        Letter(id: 4, text: "N"),
+        Letter(id: 5, text: "G"),
+    ]
+    @State private var guessedLetters: [Letter] = []
     
     var body: some View {
         GeometryReader { proxy in
@@ -27,9 +34,9 @@ struct ContentView: View {
                         Spacer()
                         
                         HStack {
-                            ForEach(guessedLetters, id: \.self) { guessedLetter in
+                            ForEach(guessedLetters) { guessedLetter in
                                 VStack {
-                                    LetterView(character: guessedLetter)
+                                    LetterView(letter: guessedLetter)
                                     Rectangle()
                                         .fill(Color.white)
                                         .frame(width: 25, height: 2)
@@ -51,11 +58,11 @@ struct ContentView: View {
                     
                     HStack {
                         ForEach(Array(letters.enumerated()), id: \.1) { index, letter in
-                            LetterView(character: letter)
+                            LetterView(letter: letter)
                                 .onTapGesture {
-                                    if !letter.isEmpty {
+                                    if !letter.text.isEmpty {
                                         guessedLetters.append(letter)
-                                        letters[index] = ""
+                                        letters[index].text = ""
                                     }
                                 }
                         }
@@ -71,10 +78,10 @@ struct ContentView: View {
 }
 
 struct LetterView: View {
-    let character: String
+    let letter: Letter
     
     var body: some View {
-        Text(character)
+        Text(letter.text)
             .font(.system(size: 15, weight: .semibold))
             .foregroundStyle(.white)
             .frame(width:30, height: 30)
