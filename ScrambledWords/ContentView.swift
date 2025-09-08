@@ -16,6 +16,7 @@ struct ContentView: View {
         Letter(id: 5, text: "G"),
     ]
     @State private var guessedLetters: [Letter] = []
+    let correctAnswer = "ORANGE"
     
     var body: some View {
         GeometryReader { proxy in
@@ -43,6 +44,7 @@ struct ContentView: View {
                                                 letters[guessedLetter.id].text = guessedLetter.text
                                             }
                                         }
+                                    
                                     Rectangle()
                                         .fill(Color.white)
                                         .frame(width: 25, height: 2)
@@ -69,6 +71,18 @@ struct ContentView: View {
                                     if !letter.text.isEmpty {
                                         guessedLetters.append(letter)
                                         letters[index].text = ""
+                                        if guessedLetters.count == letters.count {
+                                            // eval if right or wrong
+                                            var guessedAnswer = ""
+                                            for guessedLetter in guessedLetters {
+                                                guessedAnswer += guessedLetter.text
+                                            }
+                                            if guessedAnswer == correctAnswer {
+                                                print("Correct answer")
+                                            } else {
+                                                print("Wrong answer")
+                                            }
+                                        }
                                     }
                                 }
                         }
